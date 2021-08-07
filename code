@@ -1,0 +1,27 @@
+//https://leetcode.com/problems/top-k-frequent-elements/submissions/
+
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        
+        map<int,int> mp;
+        priority_queue<pair<int, int> > g;
+        int k1=0;
+        vector<int> v;
+        for(int i=0; i<nums.size(); i++){
+            mp[nums[i]]++;
+        }
+        for(auto x : mp){
+            g.push({x.second,x.first});
+        }
+        while (!g.empty()) {
+            if(k1==k){
+                break;
+            }
+        v.push_back(g.top().second);
+        g.pop();
+        k1++;
+        }
+        return v;
+    }
+};
